@@ -7,8 +7,8 @@ import (
 )
 
 type Property struct {
-	path  string
-	value interface{}
+	Path  string
+	Value interface{}
 }
 
 type Properties []*Property
@@ -34,8 +34,8 @@ func listRecursive(props Properties, slice yaml.MapSlice, basePath string) Prope
 			props = listArrayRecursive(props, value, path)
 		default:
 			p := new(Property)
-			p.path = path
-			p.value = value
+			p.Path = path
+			p.Value = value
 			props = append(props, p)
 		}
 	}
@@ -52,8 +52,8 @@ func listArrayRecursive(props Properties, array []interface{}, basePath string) 
 			props = listArrayRecursive(props, value, path)
 		default:
 			p := new(Property)
-			p.path = path
-			p.value = value
+			p.Path = path
+			p.Value = value
 			props = append(props, p)
 		}
 	}

@@ -7,11 +7,11 @@ func assertProperties(t *testing.T, result Properties, expected Properties) {
 		t.Fatalf("Result has %d properties, want %d", len(result), len(expected))
 	}
 	for i := 0; i < len(result); i++ {
-		if result[i].path != expected[i].path {
-			t.Errorf("result[%d].path = %s, want %s", i, result[i].path, expected[i].path)
+		if result[i].Path != expected[i].Path {
+			t.Errorf("result[%d].path = %s, want %s", i, result[i].Path, expected[i].Path)
 		}
-		if result[i].value != expected[i].value {
-			t.Errorf("result[%d].value = %v, want %v", i, result[i].value, expected[i].value)
+		if result[i].Value != expected[i].Value {
+			t.Errorf("result[%d].value = %v, want %v", i, result[i].Value, expected[i].Value)
 		}
 	}
 }
