@@ -8,10 +8,10 @@ import (
 
 func Query(s yaml.MapSlice, path string) (interface{}, error) {
 	pathChain := ParsePathString(path)
-	return searchRecursive(s, pathChain)
+	return queryRecursive(s, pathChain)
 }
 
-func searchRecursive(current interface{}, pathChain []interface{}) (interface{}, error) {
+func queryRecursive(current interface{}, pathChain []interface{}) (interface{}, error) {
 	if len(pathChain) == 0 {
 		switch v := current.(type) {
 		case yaml.MapSlice:
@@ -28,14 +28,14 @@ func searchRecursive(current interface{}, pathChain []interface{}) (interface{},
 		if key, ok := pathChain[0].(string); ok {
 			for _, item := range v {
 				if item.Key == key {
-					return searchRecursive(item.Value, pathChain[1:])
+					return queryRecursive(item.Value, pathChain[1:])
 				}
 			}
 		}
 	case []interface{}:
 		if index, ok := pathChain[0].(int); ok {
 			if len(v) > index {
-				return searchRecursive(v[index], pathChain[1:])
+				return queryRecursive(v[index], pathChain[1:])
 			}
 		}
 	}

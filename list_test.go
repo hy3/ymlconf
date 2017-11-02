@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func assertPropertyList(t *testing.T, result Properties, expected Properties) {
+func assertProperties(t *testing.T, result Properties, expected Properties) {
 	if len(result) != len(expected) {
 		t.Fatalf("Result has %d properties, want %d", len(result), len(expected))
 	}
@@ -33,7 +33,7 @@ def: value2
 	}
 
 	result := List(s)
-	assertPropertyList(t, result, expected)
+	assertProperties(t, result, expected)
 }
 
 func TestListArray(t *testing.T) {
@@ -55,7 +55,7 @@ array:
 	}
 
 	result := List(s)
-	assertPropertyList(t, result, expected)
+	assertProperties(t, result, expected)
 }
 
 func TestListNestedHash(t *testing.T) {
@@ -81,7 +81,7 @@ japan:
 	}
 
 	result := List(s)
-	assertPropertyList(t, result, expected)
+	assertProperties(t, result, expected)
 }
 
 func TestListNestedArray(t *testing.T) {
@@ -109,7 +109,7 @@ matrix:
 	}
 
 	result := List(s)
-	assertPropertyList(t, result, expected)
+	assertProperties(t, result, expected)
 }
 
 func TestListArrayOfHash(t *testing.T) {
@@ -133,5 +133,5 @@ members:
 	}
 
 	result := List(s)
-	assertPropertyList(t, result, expected)
+	assertProperties(t, result, expected)
 }
